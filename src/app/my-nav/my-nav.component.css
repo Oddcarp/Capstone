@@ -19,4 +19,13 @@
 
 .toolbar-link {
   margin: auto 5px;
+  line-height: 100%;
+  height: 100%;
+  text-decoration-line: none;
+  
 }
+.toolbar-link span {
+  line-height: 60px;
+  color: white;
+}
+

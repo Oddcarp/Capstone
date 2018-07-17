@@ -7,13 +7,13 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Home</a>
-      <a mat-list-item href="#">spdf</a>
-      <a mat-list-item href="#">AMSD</a>
+      <a routerLink="/Home" routerLinkActive="active" mat-list-item href="#">Home</a>
+      <a routerLink="/spdf" routerLinkActive="active" mat-list-item href="#">spdf</a>
+      <a routerLink="/AMSD" routerLinkActive="active" mat-list-item href="#">AMSD</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary">      
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -24,9 +24,9 @@
       </button>
       <span>Ray Keller</span>
       <span class="fill-empty-space"></span>
-      <a class = "toolbar-link" *ngIf="isNotHandset$ | async">Home</a>
-      <a class = "toolbar-link"  *ngIf="isNotHandset$ | async">spdf</a>
-      <a class = "toolbar-link"  *ngIf="isNotHandset$ | async">AMSD</a>
+      <a class = "toolbar-link" routerLink="/Home" *ngIf="isNotHandset$ | async"><span>Home</span></a>
+      <a class = "toolbar-link" routerLink="/spdf"  *ngIf="isNotHandset$ | async"><span>spdf</span></a>
+      <a class = "toolbar-link" routerLink="/AMSD"  *ngIf="isNotHandset$ | async"><span>AMSD</span></a>    
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>
