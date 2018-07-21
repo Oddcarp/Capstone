@@ -25,21 +25,21 @@ solveProblem() {
   let numberOfNumberArgs:number = 0;
   let paramArray:number[];
   for (let i = 0; i < argumentsArray.length; i++) {
-    if (!isNaN(argumentsArray[i]) && (argumentsArray[i] != 0 && argumentsArray[i] !== null)) {
-      paramArray.push(argumentsArray[i]);
+    if (!isNaN(argumentsArray[i]) && (argumentsArray[i] != 0 && argumentsArray[i] !== null)) {  
       numberOfNumberArgs++;
     }
   }
   if (numberOfNumberArgs === 3) {
     let params = new HttpParams()
-       .set('pressure',data.pressure)
-       .set('volume',data.volume)
-       .set('moles',data.moles)
-       .set('temperature',data.temperature);
+       .set('pressure', data.pressure === null ? '' : data.pressure )
+       .set('volume', data.volume === null ? '' : data.volume)
+       .set('moles', data.moles === null ? '' : data.moles)
+       .set('temperature', data.temperature === null ? '' : data.temperature);
  
     return me.http.get(me.ROOT_URL,{params}).subscribe(answer => this.updateResult(answer));
   } else {
     console.log('invalid arguments');
+    this.result = '';
   }
  }
 
