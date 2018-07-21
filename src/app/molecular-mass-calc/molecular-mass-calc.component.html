@@ -1,0 +1,26 @@
+<mat-card class="molecular-mass-calc-card">
+    <mat-card-header>
+      <mat-card-title><h2>Molecular Mass Calculator</h2></mat-card-title>
+    </mat-card-header>  
+        <mat-card-content>
+      <p>
+        PV=nRT
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <form [formGroup]="problemForm" novalidate>
+        <mat-form-field>
+            <input matInput
+                  formControlName="formula"
+                   placeholder="Formula (e.g. CH3)"
+                   type="text"
+                    class="input">            
+        </mat-form-field>        
+            
+        </form>
+    </mat-card-actions>
+    <button mat-raised-button color="primary" (click)="solveProblem()">Solve</button>
+    <br>
+    <div *ngIf="result">Solution: {{ result }}</div>
+  </mat-card>
+ 

@@ -1,0 +1,28 @@
+.ideal-gas-law-card > .mdl-card__menu {
+    color: #fff;
+   }
+   mat-card {
+      margin: 10px auto;
+      max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+   }
+   .example-right-align {
+      text-align: left;
+    }
+     input.example-right-align::-webkit-outer-spin-button,
+    input.example-right-align::-webkit-inner-spin-button {
+      display: none;
+    }
+     input.example-right-align {
+      -moz-appearance: textfield;
+    }
+    mat-form-field {
+        width: 300px;
+    }
+    .matSuffix p{
+        color: purple;
+    }
+   

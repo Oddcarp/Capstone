@@ -1,0 +1,51 @@
+<mat-card class="ideal-gas-law-card">
+    <mat-card-header>
+      <mat-card-title><h2>Ideal Gas Law</h2></mat-card-title>
+    </mat-card-header>  
+        <mat-card-content>
+      <p>
+        PV=nRT
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <form [formGroup]="problemForm" novalidate>
+        <mat-form-field>
+            <input matInput
+                  formControlName="pressure"
+                   placeholder="Pressure"
+                   type="number"
+                    class="input example-right-align">
+            <span matSuffix>atms</span>
+        </mat-form-field>
+         
+            <mat-form-field>
+                <input matInput
+                formControlName="volume"
+                 placeholder="Volume"
+                 type="number"
+                  class="input example-right-align">
+            <span matSuffix>L</span>
+          </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                formControlName="moles"
+                 placeholder="Moles"
+                 type="number"
+                  class="input example-right-align">
+            <span matSuffix>moles</span>
+          </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                formControlName="temperature"
+                 placeholder="Temperature"
+                 type="number"
+                  class="input example-right-align">
+            <span matSuffix>K</span>
+          </mat-form-field>
+        </form>
+    </mat-card-actions>
+    <button mat-raised-button color="primary" (click)="solveProblem()">Solve</button>
+    <br>    
+    <div *ngIf="result">Weight: {{ result }}</div>
+  </mat-card>
+ 

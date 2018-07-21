@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SpdfComponent } from './spdf/spdf.component';
 import { AmsdComponent } from './amsd/amsd.component';
+import { FormsModule }   from '@angular/forms';
 
 const routes: Routes = [
   { path: 'Home', component: WelcomePageComponent },
@@ -12,7 +13,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), FormsModule],  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
