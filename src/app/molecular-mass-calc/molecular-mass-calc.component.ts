@@ -9,11 +9,16 @@ import {Observable} from 'rxjs'
   styleUrls: ['./molecular-mass-calc.component.scss']
 })
 export class MolecularMassCalcComponent implements OnInit {
+  outputString:string;
   problem: any;
   result: any;
   resultType: any;
   problemForm: FormGroup;
+  
   readonly ROOT_URL = 'http://localhost:8080/calculator';
+
+
+  
  solveProblem() {
   // if (this.problemForm.status != 'VALID') {
   //   console.log('form is not valid')
@@ -21,6 +26,7 @@ export class MolecularMassCalcComponent implements OnInit {
    //}
    const data = this.problemForm.value
    console.log(data)
+
    let params = new HttpParams()
         .set('formula',data.formula)
  
@@ -37,9 +43,24 @@ export class MolecularMassCalcComponent implements OnInit {
  
   ngOnInit() {
     this.problemForm = this.fb.group({
-      formula: ''
+      formula: new FormControl('')
     });
  
+  this.problemForm.controls['formula'].valueChanges.subscribe(value => {
+    if (value.length > 0) {
+      let charArray:string[] = value.split('');
+      this.outputString ='';
+      let curChar:string = '';
+      for (var i = 0 ; i < charArray.length ; i++) {
+        curChar = value.charAt(i);
+        if (!isNaN(value.charAt(i))) {
+          this.outputString += '<sub>' + curChar + '</sub>';
+        } else {
+          this.outputString += curChar;
+        }
+      }
+    }
+  });
     //this.problem.subscribe(problem => {
     //  this.problemForm.patchValue(problem)
     //})

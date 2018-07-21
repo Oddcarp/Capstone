@@ -3,9 +3,7 @@
       <mat-card-title><h2>Molecular Mass Calculator</h2></mat-card-title>
     </mat-card-header>  
         <mat-card-content>
-      <p>
-        PV=nRT
-      </p>
+      <p></p>
     </mat-card-content>
     <mat-card-actions>
       <form [formGroup]="problemForm" novalidate>
@@ -21,6 +19,7 @@
     </mat-card-actions>
     <button mat-raised-button color="primary" (click)="solveProblem()">Solve</button>
     <br>
-    <div *ngIf="result">Solution: {{ result }}</div>
+    <div #output [innerHTML]="outputString"></div>
+    <div *ngIf="result">Mass: {{ result }} g/mole</div>
   </mat-card>
  
