@@ -45,7 +45,8 @@
         </form>
     </mat-card-actions>
     <button mat-raised-button color="primary" (click)="solveProblem()">Solve</button>
-    <br>    
-    <div *ngIf="result">Weight: {{ result }}</div>
+    <br>   
+    <div *ngIf="result">Solve for {{ resultType }}</div> 
+    <div *ngIf="result">Solution: {{ result }}</div>
   </mat-card>
  
