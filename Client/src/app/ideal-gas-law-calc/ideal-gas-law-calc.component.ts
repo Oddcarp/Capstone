@@ -17,25 +17,35 @@ export class IdealGasLawCalcComponent implements OnInit {
 // volume = new FormControl('', [Validators.required, Validators.email]);
 // moles = new FormControl('', [Validators.required, Validators.email]);
 // temperature = new FormControl('', [Validators.required, Validators.email]);
-solveProblem() {
- // if (this.problemForm.status != 'VALID') {
- //   console.log('form is not valid')
- //   return
-  //}
-  const data = this.problemForm.value
+solveProblem() { 
+  let me = this;
+  let data = this.problemForm.value
   console.log(data)
-  let params = new HttpParams()
+  let argumentsArray:number[] = [data.pressure,data.volume,data.moles,data.temperature];
+  let numberOfNumberArgs:number = 0;
+  let paramArray:number[];
+  for (let i = 0; i < argumentsArray.length; i++) {
+    if (!isNaN(argumentsArray[i]) && (argumentsArray[i] != 0 && argumentsArray[i] !== null)) {
+      paramArray.push(argumentsArray[i]);
+      numberOfNumberArgs++;
+    }
+  }
+  if (numberOfNumberArgs === 3) {
+    let params = new HttpParams()
        .set('pressure',data.pressure)
        .set('volume',data.volume)
        .set('moles',data.moles)
        .set('temperature',data.temperature);
-
-  return this.http.get(this.ROOT_URL,{params}).subscribe(answer => this.updateResult(answer));
-
-}
+ 
+    return me.http.get(me.ROOT_URL,{params}).subscribe(answer => this.updateResult(answer));
+  } else {
+    console.log('invalid arguments');
+  }
+ }
 
 updateResult(answer) {
  console.log(answer);
+ 
  this.result = answer.solution;
  this.resultType = answer.solutionType;
  }

@@ -16,25 +16,25 @@ public class IdealGasLaw {
 
 
     public IdealGasLaw(long id, String pressure, String volume, String moles, String temperature) {
-        if (pressure == "") {
+        if (pressure == "" || pressure == null) {
             double volumeDouble = Double.parseDouble(volume);
             double molesDouble = Double.parseDouble(moles);
             double temperatureDouble = Double.parseDouble(temperature);
             solveFor = "Pressure";
             finalSolution = solveForPressure(volumeDouble, molesDouble, temperatureDouble);
-        } else if (volume == "") {
+        } else if (volume == "" || volume == null) {
             double pressureDouble = Double.parseDouble(pressure);
             double molesDouble = Double.parseDouble(moles);
             double temperatureDouble = Double.parseDouble(temperature);
             solveFor = "Volume";
             finalSolution = solveForVolume(pressureDouble, molesDouble, temperatureDouble);
-        } else if (moles == "") {
+        } else if (moles == "" || moles == null) {
             double pressureDouble = Double.parseDouble(pressure);
             double volumeDouble = Double.parseDouble(volume);
             double temperatureDouble = Double.parseDouble(temperature);
             solveFor = "Moles";
             finalSolution = solveForMoles(pressureDouble, volumeDouble, temperatureDouble);
-        } else if (temperature == "") {
+        } else if (temperature == "" || temperature == null) {
             double pressureDouble = Double.parseDouble(pressure);
             double volumeDouble = Double.parseDouble(volume);
             double molesDouble = Double.parseDouble(moles);

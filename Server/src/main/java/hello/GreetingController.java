@@ -10,6 +10,10 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class GreetingController {
 
+
+
+    final String CLIENT_URL = "http://localhost:4200";
+
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
@@ -19,18 +23,18 @@ public class GreetingController {
                 String.format(template, name));
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = CLIENT_URL)
     @RequestMapping("/calculator")
     public Calculator calculator(@RequestParam(value="formula", defaultValue="H") String formula) {
         return new Calculator(counter.incrementAndGet(), formula);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = CLIENT_URL)
     @RequestMapping("/idealgaslaw")
-    public IdealGasLaw idealGasLaw(@RequestParam(value="pressure") String pressure,
-                                   @RequestParam(value="volume") String volume,
-                                   @RequestParam(value="moles") String moles,
-                                   @RequestParam(value="temperature") String temperature) {
+    public IdealGasLaw idealGasLaw(@RequestParam(value="pressure", required=false) String pressure,
+                                   @RequestParam(value="volume", required=false) String volume,
+                                   @RequestParam(value="moles", required=false) String moles,
+                                   @RequestParam(value="temperature", required=false) String temperature) {
         return new IdealGasLaw(counter.incrementAndGet(), pressure, volume, moles, temperature);
     }
 }
